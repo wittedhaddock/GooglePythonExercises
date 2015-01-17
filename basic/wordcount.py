@@ -56,8 +56,7 @@ def lastItemSort(item):
   return item[1]
 
 def print_top(filename):
-  full = mode_dict(filename)
-  print([value for value in sorted(full.items(), reverse = True, key = lastItemSort)])
+  print([value for value in sorted(mode_dict(filename).items(), reverse = True, key = lastItemSort)])
 
 
 # +++your code here+++
