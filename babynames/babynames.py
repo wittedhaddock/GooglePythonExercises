@@ -40,8 +40,21 @@ def extract_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-  # +++your code here+++
-  return
+  full = open(filename, "rU").read()
+  yearMatch = re.search(r"Popularity in (\d+)", full) #also first child
+  year = ""
+  if yearMatch.group(1):
+    year = yearMatch.group(1)
+    print "Parsed The Year! = " + year
+  namesNumbersMatch = re.findall(r"<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>", full)
+  secondChild = []
+  for tuple in namesNumbersMatch:
+    one = str(tuple[1]) + " " + tuple[0]
+    two = str(tuple[2]) + " " + tuple[0]
+    secondChild.append(one)
+    secondChild.append(two)
+  secondChild.insert(0, year)
+  return sorted(secondChild)
 
 
 def main():
